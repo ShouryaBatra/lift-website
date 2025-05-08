@@ -1,1 +1,1 @@
-## Website for LIFT
+# LIFT website
