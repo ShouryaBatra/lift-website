@@ -19,6 +19,13 @@ const staggerContainer = {
 
 export default function About() {
   const teamMembers = [
+    
+    {
+      name: 'Samay',
+      role: 'Founder',
+      bio: 'Dedicated to creating opportunities for at-risk youth.',
+      image: '/team/samay.jpg'
+    },
     {
       name: 'Arnav',
       role: 'Founder',
@@ -26,14 +33,8 @@ export default function About() {
       image: '/team/arnav.jpg' // You'll need to add these images
     },
     {
-      name: 'Samay',
-      role: 'Co-Founder',
-      bio: 'Dedicated to creating opportunities for at-risk youth.',
-      image: '/team/samay.jpg'
-    },
-    {
       name: 'Advay',
-      role: 'Co-Founder',
+      role: 'Founder',
       bio: 'Committed to transforming lives through education.',
       image: '/team/advay.jpg'
     }
@@ -135,7 +136,7 @@ export default function About() {
               variants={fadeInUp}
               className="text-3xl font-bold text-lift-text-primary text-center mb-12"
             >
-              Our Story
+              Founders' Story
             </motion.h2>
             <motion.div
               variants={fadeInUp}

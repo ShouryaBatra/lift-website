@@ -3,6 +3,7 @@ import MainLayout from '../components/layout/MainLayout';
 import Container from '../components/ui/Container';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import AnimatedCounter from '../components/ui/AnimatedCounter';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -21,22 +22,26 @@ const staggerContainer = {
 export default function Impact() {
   const impactStats = [
     {
-      number: '1000+',
+      number: 1000,
+      suffix: '+',
       label: 'Students Mentored',
       description: 'Youth empowered through our programs'
     },
     {
-      number: '85%',
+      number: 85,
+      suffix: '%',
       label: 'Success Rate',
       description: 'Students achieving their financial goals'
     },
     {
-      number: '50+',
+      number: 50,
+      suffix: '+',
       label: 'Partner Schools',
       description: 'Educational institutions we work with'
     },
     {
-      number: '200+',
+      number: 200,
+      suffix: '+',
       label: 'Volunteers',
       description: 'Dedicated mentors and educators'
     }
@@ -105,7 +110,7 @@ export default function Impact() {
               <Card key={stat.label} className="p-6 text-center">
                 <motion.div variants={fadeInUp}>
                   <h3 className="text-4xl font-bold text-lift-blue mb-2">
-                    {stat.number}
+                    <AnimatedCounter end={stat.number} suffix={stat.suffix} />
                   </h3>
                   <p className="text-lg font-semibold text-lift-text-primary mb-2">
                     {stat.label}
