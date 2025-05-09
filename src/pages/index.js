@@ -1,23 +1,30 @@
-import { motion } from 'framer-motion';
-import MainLayout from '../components/layout/MainLayout';
-import Button from '../components/ui/Button';
-import Card from '../components/ui/Card';
-import Container from '../components/ui/Container';
-import AnimatedCounter from '../components/ui/AnimatedCounter';
+import { motion } from "framer-motion";
+import MainLayout from "../components/layout/MainLayout";
+import Button from "../components/ui/Button";
+import Card from "../components/ui/Card";
+import Container from "../components/ui/Container";
+import AnimatedCounter from "../components/ui/AnimatedCounter";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
+
+const impactNumbers = [
+  { number: 1000, suffix: "+", label: "Students Mentored" },
+  { number: 50, suffix: "+", label: "Chapters Worldwide" },
+  { number: 5000, suffix: "+", label: "Hours of Content" },
+  { number: 200, suffix: "+", label: "Volunteers Trained" },
+];
 
 export default function Home() {
   return (
@@ -51,8 +58,12 @@ export default function Home() {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Button size="lg">Join a Chapter</Button>
-              <Button variant="secondary" size="lg">See Our Impact</Button>
-              <Button variant="ghost" size="lg">Learn More</Button>
+              <Button variant="secondary" size="lg">
+                See Our Impact
+              </Button>
+              <Button variant="ghost" size="lg">
+                Learn More
+              </Button>
             </motion.div>
           </motion.div>
         </Container>
@@ -68,12 +79,7 @@ export default function Home() {
             variants={staggerContainer}
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
-            {[
-              { number: 1000, suffix: '+', label: 'Students Mentored' },
-              { number: 50, suffix: '+', label: 'Chapters Worldwide' },
-              { number: 5000, suffix: '+', label: 'Hours of Content' },
-              { number: 200, suffix: '+', label: 'Volunteers Trained' }
-            ].map((stat, index) => (
+            {impactNumbers.map((stat, index) => (
               <motion.div
                 key={index}
                 variants={fadeInUp}
@@ -173,7 +179,8 @@ export default function Home() {
               variants={fadeInUp}
               className="text-lift-text-secondary mb-8"
             >
-              Join our newsletter to receive updates about our programs and impact.
+              Join our newsletter to receive updates about our programs and
+              impact.
             </motion.p>
             <motion.form
               variants={fadeInUp}

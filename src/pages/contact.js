@@ -1,79 +1,85 @@
-import { motion } from 'framer-motion';
-import MainLayout from '../components/layout/MainLayout';
-import Container from '../components/ui/Container';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
+import { motion } from "framer-motion";
+import MainLayout from "../components/layout/MainLayout";
+import Container from "../components/ui/Container";
+import Card from "../components/ui/Card";
+import Button from "../components/ui/Button";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function Contact() {
-  const offices = [
-    {
-      city: 'New York',
-      address: '123 Financial District, New York, NY 10004',
-      phone: '+1 (212) 555-0123',
-      email: 'newyork@lift.org',
-      hours: 'Mon-Fri: 9:00 AM - 6:00 PM EST'
-    },
-    {
-      city: 'London',
-      address: '45 Business Square, London, EC2A 4BX',
-      phone: '+44 20 7123 4567',
-      email: 'london@lift.org',
-      hours: 'Mon-Fri: 9:00 AM - 6:00 PM GMT'
-    },
-    {
-      city: 'Singapore',
-      address: '78 Marina Bay Drive, Singapore 018956',
-      phone: '+65 6123 4567',
-      email: 'singapore@lift.org',
-      hours: 'Mon-Fri: 9:00 AM - 6:00 PM SGT'
-    }
-  ];
-
   const contactMethods = [
     {
-      title: 'General Inquiries',
-      description: 'For general questions about L.I.F.T. and our programs',
-      email: 'info@lift.org',
+      title: "General Inquiries",
+      description: "For general questions about L.I.F.T. and our programs",
+      email: "info@lift.org",
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          />
         </svg>
-      )
+      ),
     },
     {
-      title: 'Partnership Opportunities',
-      description: 'Interested in partnering with L.I.F.T.?',
-      email: 'partnerships@lift.org',
+      title: "Partnership Opportunities",
+      description: "Interested in partnering with L.I.F.T.?",
+      email: "partnerships@lift.org",
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"
+          />
         </svg>
-      )
+      ),
     },
     {
-      title: 'Media Inquiries',
-      description: 'For press and media-related questions',
-      email: 'press@lift.org',
+      title: "Media Inquiries",
+      description: "For press and media-related questions",
+      email: "press@lift.org",
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"
+          />
         </svg>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -97,8 +103,8 @@ export default function Contact() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-8"
             >
-              Have questions? We're here to help. Choose the best way to reach us
-              below.
+              Have questions? We're here to help. Choose the best way to reach
+              us below.
             </motion.p>
           </motion.div>
         </Container>
@@ -123,7 +129,10 @@ export default function Contact() {
             <form className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="firstName" className="block text-sm font-medium text-lift-text-primary mb-2">
+                  <label
+                    htmlFor="firstName"
+                    className="block text-sm font-medium text-lift-text-primary mb-2"
+                  >
                     First Name
                   </label>
                   <input
@@ -134,7 +143,10 @@ export default function Contact() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="lastName" className="block text-sm font-medium text-lift-text-primary mb-2">
+                  <label
+                    htmlFor="lastName"
+                    className="block text-sm font-medium text-lift-text-primary mb-2"
+                  >
                     Last Name
                   </label>
                   <input
@@ -146,7 +158,10 @@ export default function Contact() {
                 </div>
               </div>
               <div>
-                <label htmlFor="email" className="block text-sm font-medium text-lift-text-primary mb-2">
+                <label
+                  htmlFor="email"
+                  className="block text-sm font-medium text-lift-text-primary mb-2"
+                >
                   Email
                 </label>
                 <input
@@ -156,19 +171,12 @@ export default function Contact() {
                   required
                 />
               </div>
+
               <div>
-                <label htmlFor="subject" className="block text-sm font-medium text-lift-text-primary mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lift-blue focus:border-transparent"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium text-lift-text-primary mb-2">
+                <label
+                  htmlFor="message"
+                  className="block text-sm font-medium text-lift-text-primary mb-2"
+                >
                   Message
                 </label>
                 <textarea
@@ -189,7 +197,7 @@ export default function Contact() {
       </section>
 
       {/* Office Locations Section */}
-      <section className="py-20 bg-lift-accent">
+      {/* <section className="py-20 bg-lift-accent">
         <Container>
           <motion.div
             initial="initial"
@@ -222,10 +230,10 @@ export default function Contact() {
             </div>
           </motion.div>
         </Container>
-      </section>
+      </section> */}
 
       {/* Contact Methods Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-lift-accent">
         <Container>
           <motion.div
             initial="initial"
@@ -267,7 +275,7 @@ export default function Contact() {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 bg-lift-accent">
+      <section className="py-20 bg-white">
         <Container>
           <motion.div
             initial="initial"
@@ -286,13 +294,10 @@ export default function Contact() {
               variants={fadeInUp}
               className="text-lift-text-secondary mb-8"
             >
-              Can't find what you're looking for? Check our FAQ page for quick answers
-              to common questions.
+              Can't find what you're looking for? Check our FAQ page for quick
+              answers to common questions.
             </motion.p>
-            <motion.div
-              variants={fadeInUp}
-              className="flex justify-center"
-            >
+            <motion.div variants={fadeInUp} className="flex justify-center">
               <Button size="lg">View FAQ</Button>
             </motion.div>
           </motion.div>
@@ -300,4 +305,4 @@ export default function Contact() {
       </section>
     </MainLayout>
   );
-} 
+}
