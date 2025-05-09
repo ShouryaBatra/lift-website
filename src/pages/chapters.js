@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { collection, getDocs } from 'firebase/firestore';
+import { db } from '../config/firebase';
 import MainLayout from '../components/layout/MainLayout';
 import Container from '../components/ui/Container';
 import Card from '../components/ui/Card';
@@ -19,49 +22,30 @@ const staggerContainer = {
 };
 
 export default function Chapters() {
-  // This object can be expanded as new chapters are added
-  const chapterDirectory = [
-    {
-      location: 'New York, USA',
-      members: 150,
-      programs: ['Financial Literacy', 'Professional Development'],
-      image: '/chapters/ny.jpg',
-      description: 'Our flagship chapter serving the greater New York area.',
-      status: 'active'
-    },
-    {
-      location: 'London, UK',
-      members: 120,
-      programs: ['Financial Literacy', 'Leadership Development'],
-      image: '/chapters/london.jpg',
-      description: 'Expanding our impact across the United Kingdom.',
-      status: 'active'
-    },
-    {
-      location: 'Singapore',
-      members: 100,
-      programs: ['Professional Development', 'Leadership Development'],
-      image: '/chapters/singapore.jpg',
-      description: 'Bringing financial education to Southeast Asia.',
-      status: 'active'
-    },
-    {
-      location: 'Toronto, Canada',
-      members: 80,
-      programs: ['Financial Literacy', 'Professional Development'],
-      image: '/chapters/toronto.jpg',
-      description: 'Growing our presence in North America.',
-      status: 'active'
-    },
-    {
-      location: 'Sydney, Australia',
-      members: 60,
-      programs: ['Leadership Development', 'Professional Development'],
-      image: '/chapters/sydney.jpg',
-      description: 'Expanding our reach in the Asia-Pacific region.',
-      status: 'active'
-    }
-  ];
+  const [chapters, setChapters] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchChapters = async () => {
+      try {
+        const chaptersCollection = collection(db, 'chapters');
+        const chaptersSnapshot = await getDocs(chaptersCollection);
+        const chaptersList = chaptersSnapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        }));
+        setChapters(chaptersList);
+      } catch (err) {
+        console.error('Error fetching chapters:', err);
+        setError('Failed to load chapters. Please try again later.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchChapters();
+  }, []);
 
   return (
     <MainLayout>
@@ -169,39 +153,49 @@ export default function Chapters() {
             >
               Chapter Directory
             </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {chapterDirectory.map((chapter) => (
-                <Card key={chapter.location} className="p-6">
-                  <div className="text-center">
-                    <div className="w-full h-48 bg-gray-200 rounded-lg mb-4">
-                      {/* Add actual images later */}
-                    </div>
-                    <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
-                      {chapter.location}
-                    </h3>
-                    <p className="text-lift-text-secondary mb-4">
-                      {chapter.description}
-                    </p>
-                    <div className="space-y-2 mb-6">
-                      <p className="text-lift-blue">
-                        <span className="font-semibold">{chapter.members}</span> Members
-                      </p>
-                      <div className="flex flex-wrap gap-2 justify-center">
-                        {chapter.programs.map((program) => (
-                          <span
-                            key={program}
-                            className="px-3 py-1 bg-lift-blue/10 text-lift-blue rounded-full text-sm"
-                          >
-                            {program}
-                          </span>
-                        ))}
+            {loading ? (
+              <div className="text-center">
+                <p className="text-lift-text-secondary">Loading chapters...</p>
+              </div>
+            ) : error ? (
+              <div className="text-center text-red-500">
+                <p>{error}</p>
+              </div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {chapters.map((chapter) => (
+                  <Card key={chapter.id} className="p-6">
+                    <div className="text-center">
+                      <div className="w-full h-48 bg-gray-200 rounded-lg mb-4">
+                        {/* Add actual images later */}
                       </div>
+                      <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
+                        {chapter.location}
+                      </h3>
+                      <p className="text-lift-text-secondary mb-4">
+                        {chapter.description}
+                      </p>
+                      <div className="space-y-2 mb-6">
+                        <p className="text-lift-blue">
+                          <span className="font-semibold">{chapter.members}</span> Members
+                        </p>
+                        <div className="flex flex-wrap gap-2 justify-center">
+                          {chapter.programs.map((program) => (
+                            <span
+                              key={program}
+                              className="px-3 py-1 bg-lift-blue/10 text-lift-blue rounded-full text-sm"
+                            >
+                              {program}
+                            </span>
+                          ))}
+                        </div>
+                      </div>
+                      <Button variant="secondary">Learn More</Button>
                     </div>
-                    <Button variant="secondary">Learn More</Button>
-                  </div>
-                </Card>
-              ))}
-            </div>
+                  </Card>
+                ))}
+              </div>
+            )}
           </motion.div>
         </Container>
       </section>
