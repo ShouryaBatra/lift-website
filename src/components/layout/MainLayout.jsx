@@ -3,9 +3,11 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const MainLayout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -32,15 +34,31 @@ const MainLayout = ({ children }) => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-8">
-              {navItems.map((item) => (
-                <Link
-                  key={item.name}
-                  href={item.href}
-                  className="text-lift-text-secondary hover:text-lift-blue transition-colors duration-200"
-                >
-                  {item.name}
-                </Link>
-              ))}
+              {navItems.map((item) => {
+                const isActive = pathname === item.href;
+                return (
+                  <Link
+                    key={item.name}
+                    href={item.href}
+                    className={`relative transition-colors duration-200 py-2 ${
+                      isActive 
+                        ? 'text-lift-blue' 
+                        : 'text-lift-text-secondary hover:text-lift-blue'
+                    }`}
+                  >
+                    {item.name}
+                    {isActive && (
+                      <motion.div
+                        layoutId="navbar-underline"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-lift-blue"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.2 }}
+                      />
+                    )}
+                  </Link>
+                );
+              })}
             </div>
 
             {/* Mobile menu button */}
@@ -86,16 +104,21 @@ const MainLayout = ({ children }) => {
               className="md:hidden bg-white"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
-                {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    href={item.href}
-                    className="block px-3 py-2 text-lift-text-secondary hover:text-lift-blue hover:bg-lift-accent rounded-md"
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ))}
+                {navItems.map((item) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <Link
+                      key={item.name}
+                      href={item.href}
+                      className={`block px-3 py-2 text-lift-text-secondary hover:text-lift-blue hover:bg-lift-accent rounded-md ${
+                        isActive ? 'text-lift-blue bg-lift-accent' : ''
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {item.name}
+                    </Link>
+                  );
+                })}
               </div>
             </motion.div>
           )}
@@ -174,6 +197,9 @@ const MainLayout = ({ children }) => {
           </div>
           <div className="mt-8 pt-8 border-t border-white/10 text-center text-gray-300">
             <p>&copy; {new Date().getFullYear()} L.I.F.T. All rights reserved.</p>
+            <p className="text-sm mt-2">
+              Website made by <Link href="/bio" className="hover:text-white transition-colors duration-200">Shourya Batra</Link>
+            </p>
           </div>
         </div>
       </footer>

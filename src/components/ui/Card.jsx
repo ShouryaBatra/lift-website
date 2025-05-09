@@ -13,7 +13,7 @@ const Card = ({
   const baseStyles = 'rounded-lg transition-all duration-200';
   
   const variants = {
-    default: 'bg-white shadow-sm hover:shadow-md',
+    default: 'bg-white border border-gray-100 shadow-sm hover:shadow-md',
     elevated: 'bg-white shadow-md hover:shadow-lg',
     outline: 'bg-white border border-gray-200 hover:border-lift-blue',
     ghost: 'bg-transparent hover:bg-lift-accent',

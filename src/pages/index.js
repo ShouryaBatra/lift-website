@@ -3,6 +3,7 @@ import MainLayout from '../components/layout/MainLayout';
 import Button from '../components/ui/Button';
 import Card from '../components/ui/Card';
 import Container from '../components/ui/Container';
+import AnimatedCounter from '../components/ui/AnimatedCounter';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -68,10 +69,10 @@ export default function Home() {
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
             {[
-              { number: '1000+', label: 'Students Mentored' },
-              { number: '50+', label: 'Chapters Worldwide' },
-              { number: '5000+', label: 'Hours of Content' },
-              { number: '200+', label: 'Volunteers Trained' }
+              { number: 1000, suffix: '+', label: 'Students Mentored' },
+              { number: 50, suffix: '+', label: 'Chapters Worldwide' },
+              { number: 5000, suffix: '+', label: 'Hours of Content' },
+              { number: 200, suffix: '+', label: 'Volunteers Trained' }
             ].map((stat, index) => (
               <motion.div
                 key={index}
@@ -79,7 +80,7 @@ export default function Home() {
                 className="text-center"
               >
                 <h3 className="text-4xl font-bold text-lift-blue mb-2">
-                  {stat.number}
+                  <AnimatedCounter end={stat.number} suffix={stat.suffix} />
                 </h3>
                 <p className="text-lift-text-secondary">{stat.label}</p>
               </motion.div>
