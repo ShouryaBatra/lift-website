@@ -1,13 +1,15 @@
+import { resolve } from "path";
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    domains: ["localhost"],
   },
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      '@': require('path').resolve(__dirname, 'src'),
+      "@": resolve(process.cwd(), "src"),
     };
     return config;
   },
