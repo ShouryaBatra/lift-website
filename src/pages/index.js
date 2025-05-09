@@ -4,6 +4,7 @@ import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
 import Container from "../components/ui/Container";
 import AnimatedCounter from "../components/ui/AnimatedCounter";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -57,13 +58,19 @@ export default function Home() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg">Join a Chapter</Button>
-              <Button variant="secondary" size="lg">
-                See Our Impact
-              </Button>
-              <Button variant="ghost" size="lg">
-                Learn More
-              </Button>
+              <Link href={"/chapters/"}>
+                <Button size="lg">Join a Chapter</Button>
+              </Link>
+              <Link href={"/impact/"}>
+                <Button variant="secondary" size="lg">
+                  See Our Impact
+                </Button>
+              </Link>
+              <Link href={"/about/"}>
+                <Button variant="ghost" size="lg">
+                  Learn More
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>
