@@ -6,6 +6,8 @@ import MainLayout from '../components/layout/MainLayout';
 import Container from '../components/ui/Container';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
+import dynamic from 'next/dynamic';
+const USAMap = dynamic(() => import('../components/USAMap'), { ssr: false });
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -96,9 +98,13 @@ export default function Chapters() {
               className="aspect-video bg-gray-200 rounded-lg mb-8"
             >
               {/* Add an interactive map component here */}
-              <p className="text-lift-text-secondary p-8">
-                Interactive map coming soon...
-              </p>
+              {loading || error ? (
+                <p className="text-lift-text-secondary p-8">
+                  {loading ? 'Loading map...' : 'Unable to load map.'}
+                </p>
+              ) : (
+                <USAMap chapters={chapters} />
+              )}
             </motion.div>
           </motion.div>
         </Container>
@@ -170,7 +176,7 @@ export default function Chapters() {
                         {/* Add actual images later */}
                       </div>
                       <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
-                        {chapter.location}
+                        {chapter.location?.city}, {chapter.location?.state}
                       </h3>
                       <p className="text-lift-text-secondary mb-4">
                         {chapter.description}
