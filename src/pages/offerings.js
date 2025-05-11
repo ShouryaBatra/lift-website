@@ -187,9 +187,11 @@ export default function Offerings() {
               <Link href={"/chapters/"}>
                 <Button size="lg">Join a Program</Button>
               </Link>
-              <Button variant="secondary" size="lg">
-                Contact Us
-              </Button>
+              <Link href={"/contact"}>
+                <Button variant="secondary" size="lg">
+                  Contact Us
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>

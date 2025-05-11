@@ -7,6 +7,7 @@ import Container from '../components/ui/Container';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import dynamic from 'next/dynamic';
+import Link from 'next/link';
 const USAMap = dynamic(() => import('../components/USAMap'), { ssr: false });
 
 const fadeInUp = {
@@ -138,7 +139,9 @@ export default function Chapters() {
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
               <Button size="lg">Start a Chapter</Button>
-              <Button variant="secondary" size="lg">Contact Us</Button>
+              <Link href={"/contact"}>
+                <Button variant="secondary" size="lg">Contact Us</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>

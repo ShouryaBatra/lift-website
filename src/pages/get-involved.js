@@ -232,8 +232,9 @@ export default function GetInvolved() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg">Contact Us</Button>
-              <Button variant="secondary" size="lg">Schedule a Call</Button>
+              <Link href={"/contact"}>
+                <Button size="lg">Contact Us</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>

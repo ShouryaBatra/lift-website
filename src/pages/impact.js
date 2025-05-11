@@ -4,6 +4,7 @@ import Container from '../components/ui/Container';
 import Card from '../components/ui/Card';
 import Button from '../components/ui/Button';
 import AnimatedCounter from '../components/ui/AnimatedCounter';
+import Link from 'next/link';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -224,8 +225,9 @@ export default function Impact() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg">Get Involved</Button>
-              <Button variant="secondary" size="lg">Donate</Button>
+              <Link href={"/get-involved"}>
+                <Button size="lg">Get Involved</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>
