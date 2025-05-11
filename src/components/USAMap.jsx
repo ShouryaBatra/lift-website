@@ -4,14 +4,15 @@ import L from 'leaflet';
 import PropTypes from 'prop-types';
 
 // Fix default marker icon issue in Leaflet
-import iconUrl from 'leaflet/dist/images/marker-icon.png';
-import iconShadow from 'leaflet/dist/images/marker-shadow.png';
-
 const defaultIcon = L.icon({
-  iconUrl,
-  shadowUrl: iconShadow,
+  iconUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-icon.png',
+  shadowUrl: 'https://unpkg.com/leaflet@1.7.1/dist/images/marker-shadow.png',
+  iconSize: [25, 41],
   iconAnchor: [12, 41],
+  popupAnchor: [1, -34],
+  shadowSize: [41, 41]
 });
+
 L.Marker.prototype.options.icon = defaultIcon;
 
 export default function USAMap({ chapters }) {
