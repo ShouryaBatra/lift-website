@@ -3,10 +3,14 @@ import MainLayout from "../components/layout/MainLayout";
 import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
-import { useState } from "react";
-import Image from "next/image";
-import billWilsonLogo from "@/assets/logos/bill-wilson.png";
 import Link from "next/link";
+import PartnerCarousel from "../components/partners/PartnerCarousel";
+import billWilsonLogo from "@/assets/logos/bill-wilson.png";
+import allcoveLogo from "@/assets/logos/allcove.png";
+import unityCare from "@/assets/logos/unityCare.jpg";
+import jobCorps from "@/assets/logos/jobCorps.png";
+import downtownYouthWellnessCenter from "@/assets/logos/downtownYouthWellnessCenter.jpeg";
+import ymca from "@/assets/logos/ymca.png";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -23,44 +27,30 @@ const staggerContainer = {
 };
 
 export default function Partners() {
-  const [hoveredPartner, setHoveredPartner] = useState(null);
-
   const partners = [
     {
       name: "Bill Wilson Center",
-      description:
-        "The largest youth shelter in Silicon Valley, providing critical support and resources to young people in need.",
       logo: billWilsonLogo,
     },
     {
-      name: "Alcove Center",
-      description:
-        "Dedicated to supporting youth through comprehensive services and programs.",
-      logo: "/partners/alcove.png",
+      name: "Allcove Center",
+      logo: allcoveLogo,
     },
     {
       name: "Unity Care",
-      description:
-        "Empowering youth and families through innovative programs and services.",
-      logo: "/partners/unity-care.png",
+      logo: unityCare,
     },
     {
       name: "SJ Job Corps",
-      description:
-        "Providing career training and education to help young people succeed.",
-      logo: "/partners/sj-job-corps.png",
+      logo: jobCorps,
     },
     {
       name: "Downtown Youth Wellness Center",
-      description:
-        "Supporting youth mental health and wellness in our community.",
-      logo: "/partners/dywc.png",
+      logo: downtownYouthWellnessCenter,
     },
     {
       name: "YMCA",
-      description:
-        "Building strong communities through youth development and social responsibility.",
-      logo: "/partners/ymca.png",
+      logo: ymca,
     },
   ];
 
@@ -155,39 +145,10 @@ export default function Partners() {
         </Container>
       </section>
 
-      {/* Partners Grid Section */}
+      {/* Partners Carousel Section */}
       <section className="py-20 bg-white">
         <Container>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
-            {partners.map((partner) => (
-              <div
-                key={partner.name}
-                className="relative group"
-                onMouseEnter={() => setHoveredPartner(partner.name)}
-                onMouseLeave={() => setHoveredPartner(null)}
-              >
-                <div className="aspect-[9/5] bg-gray-100 rounded-lg p-4 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg">
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    width={900}
-                    height={500}
-                    className="w-full h-full object-contain transition-all duration-300"
-                  />
-                </div>
-                {hoveredPartner === partner.name && (
-                  <div className="absolute inset-0 bg-white/95 rounded-lg p-6 flex flex-col justify-center items-center text-center transition-all duration-300">
-                    <h3 className="text-xl font-bold text-lift-text-primary mb-2">
-                      {partner.name}
-                    </h3>
-                    <p className="text-lift-text-secondary">
-                      {partner.description}
-                    </p>
-                  </div>
-                )}
-              </div>
-            ))}
-          </div>
+          <PartnerCarousel partners={partners} />
         </Container>
       </section>
 
