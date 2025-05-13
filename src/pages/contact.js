@@ -3,6 +3,7 @@ import MainLayout from "../components/layout/MainLayout";
 import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -298,7 +299,9 @@ export default function Contact() {
               answers to common questions.
             </motion.p>
             <motion.div variants={fadeInUp} className="flex justify-center">
-              <Button size="lg">View FAQ</Button>
+              <Link href="/faq">
+                <Button size="lg">View FAQ</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>

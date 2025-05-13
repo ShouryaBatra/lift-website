@@ -1,56 +1,77 @@
-import { motion } from 'framer-motion';
-import MainLayout from '../components/layout/MainLayout';
-import Container from '../components/ui/Container';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import MainLayout from "../components/layout/MainLayout";
+import Container from "../components/ui/Container";
+import Card from "../components/ui/Card";
+import Button from "../components/ui/Button";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function GetInvolved() {
   const volunteerOpportunities = [
     {
-      title: 'Short-term Opportunities',
-      description: 'Perfect for busy professionals who want to make an impact.',
+      title: "Short-term Opportunities",
+      description: "Perfect for busy professionals who want to make an impact.",
       options: [
-        'One-time workshop facilitation',
-        'Career day participation',
-        'Mock interview sessions',
-        'Event support'
+        "One-time workshop facilitation",
+        "Career day participation",
+        "Mock interview sessions",
+        "Event support",
       ],
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
         </svg>
-      )
+      ),
     },
     {
-      title: 'Long-term Opportunities',
-      description: 'For those looking to make a sustained impact in their community.',
+      title: "Long-term Opportunities",
+      description:
+        "For those looking to make a sustained impact in their community.",
       options: [
-        'Chapter leadership roles',
-        'Mentorship program',
-        'Curriculum development',
-        'Program coordination'
+        "Chapter leadership roles",
+        "Mentorship program",
+        "Curriculum development",
+        "Program coordination",
       ],
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+          />
         </svg>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -75,7 +96,8 @@ export default function GetInvolved() {
               className="text-xl text-lift-text-secondary mb-8"
             >
               Join our mission to empower youth through financial literacy and
-              professional development. There are many ways to make a difference.
+              professional development. There are many ways to make a
+              difference.
             </motion.p>
           </motion.div>
         </Container>
@@ -101,10 +123,16 @@ export default function GetInvolved() {
               variants={fadeInUp}
               className="text-lift-text-secondary mb-8 max-w-2xl mx-auto"
             >
-              Find and connect with a L.I.F.T. chapter in your area. Join a community of like-minded individuals making a difference in youth financial literacy.
+              Find and connect with a L.I.F.T. chapter in your area. Join a
+              community of like-minded individuals making a difference in youth
+              financial literacy.
             </motion.p>
             <motion.div variants={fadeInUp}>
-              <Link href="/chapters">
+              <Link
+                href="https://tally.so/r/3xo11v"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg">Find Your Chapter</Button>
               </Link>
             </motion.div>
@@ -133,19 +161,26 @@ export default function GetInvolved() {
               className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8"
             >
               <Card className="p-6">
-                <h3 className="text-xl font-bold text-lift-text-primary mb-4">Easy Setup</h3>
+                <h3 className="text-xl font-bold text-lift-text-primary mb-4">
+                  Easy Setup
+                </h3>
                 <p className="text-lift-text-secondary">
-                  We provide all the resources and guidance you need to get started
+                  We provide all the resources and guidance you need to get
+                  started
                 </p>
               </Card>
               <Card className="p-6">
-                <h3 className="text-xl font-bold text-lift-text-primary mb-4">Full Support</h3>
+                <h3 className="text-xl font-bold text-lift-text-primary mb-4">
+                  Full Support
+                </h3>
                 <p className="text-lift-text-secondary">
                   Access to our network, training, and ongoing assistance
                 </p>
               </Card>
               <Card className="p-6">
-                <h3 className="text-xl font-bold text-lift-text-primary mb-4">Proven Model</h3>
+                <h3 className="text-xl font-bold text-lift-text-primary mb-4">
+                  Proven Model
+                </h3>
                 <p className="text-lift-text-secondary">
                   Follow our successful framework for maximum impact
                 </p>
@@ -188,9 +223,22 @@ export default function GetInvolved() {
                     </p>
                     <ul className="space-y-2 mb-6 text-left">
                       {opportunity.options.map((option, index) => (
-                        <li key={index} className="flex items-center text-lift-text-secondary">
-                          <svg className="w-5 h-5 text-lift-blue mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        <li
+                          key={index}
+                          className="flex items-center text-lift-text-secondary"
+                        >
+                          <svg
+                            className="w-5 h-5 text-lift-blue mr-2"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                           {option}
                         </li>
@@ -241,4 +289,4 @@ export default function GetInvolved() {
       </section>
     </MainLayout>
   );
-} 
+}

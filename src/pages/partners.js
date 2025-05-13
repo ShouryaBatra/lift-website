@@ -1,24 +1,25 @@
-import { motion } from 'framer-motion';
-import MainLayout from '../components/layout/MainLayout';
-import Container from '../components/ui/Container';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
-import { useState } from 'react';
-import Image from 'next/image';
-import billWilsonLogo from '@/assets/logos/bill-wilson.png';
+import { motion } from "framer-motion";
+import MainLayout from "../components/layout/MainLayout";
+import Container from "../components/ui/Container";
+import Card from "../components/ui/Card";
+import Button from "../components/ui/Button";
+import { useState } from "react";
+import Image from "next/image";
+import billWilsonLogo from "@/assets/logos/bill-wilson.png";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function Partners() {
@@ -26,65 +27,104 @@ export default function Partners() {
 
   const partners = [
     {
-      name: 'Bill Wilson Center',
-      description: 'The largest youth shelter in Silicon Valley, providing critical support and resources to young people in need.',
-      logo: billWilsonLogo
+      name: "Bill Wilson Center",
+      description:
+        "The largest youth shelter in Silicon Valley, providing critical support and resources to young people in need.",
+      logo: billWilsonLogo,
     },
     {
-      name: 'Alcove Center',
-      description: 'Dedicated to supporting youth through comprehensive services and programs.',
-      logo: '/partners/alcove.png'
+      name: "Alcove Center",
+      description:
+        "Dedicated to supporting youth through comprehensive services and programs.",
+      logo: "/partners/alcove.png",
     },
     {
-      name: 'Unity Care',
-      description: 'Empowering youth and families through innovative programs and services.',
-      logo: '/partners/unity-care.png'
+      name: "Unity Care",
+      description:
+        "Empowering youth and families through innovative programs and services.",
+      logo: "/partners/unity-care.png",
     },
     {
-      name: 'SJ Job Corps',
-      description: 'Providing career training and education to help young people succeed.',
-      logo: '/partners/sj-job-corps.png'
+      name: "SJ Job Corps",
+      description:
+        "Providing career training and education to help young people succeed.",
+      logo: "/partners/sj-job-corps.png",
     },
     {
-      name: 'Downtown Youth Wellness Center',
-      description: 'Supporting youth mental health and wellness in our community.',
-      logo: '/partners/dywc.png'
+      name: "Downtown Youth Wellness Center",
+      description:
+        "Supporting youth mental health and wellness in our community.",
+      logo: "/partners/dywc.png",
     },
     {
-      name: 'YMCA',
-      description: 'Building strong communities through youth development and social responsibility.',
-      logo: '/partners/ymca.png'
-    }
+      name: "YMCA",
+      description:
+        "Building strong communities through youth development and social responsibility.",
+      logo: "/partners/ymca.png",
+    },
   ];
 
   const benefits = [
     {
-      title: 'Social Impact',
-      description: 'Make a meaningful difference in the lives of young people and contribute to positive social change.',
+      title: "Social Impact",
+      description:
+        "Make a meaningful difference in the lives of young people and contribute to positive social change.",
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+          />
         </svg>
-      )
+      ),
     },
     {
-      title: 'Broad Reach',
-      description: 'Connect with diverse communities and expand your organization\'s impact across the region.',
+      title: "Broad Reach",
+      description:
+        "Connect with diverse communities and expand your organization's impact across the region.",
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"
+          />
         </svg>
-      )
+      ),
     },
     {
-      title: 'SDG Alignment',
-      description: 'Align your organization with Sustainable Development Goals and demonstrate commitment to global progress.',
+      title: "SDG Alignment",
+      description:
+        "Align your organization with Sustainable Development Goals and demonstrate commitment to global progress.",
       icon: (
-        <svg className="w-8 h-8 text-lift-blue" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+        <svg
+          className="w-8 h-8 text-lift-blue"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
+          />
         </svg>
-      )
-    }
+      ),
+    },
   ];
 
   return (
@@ -108,8 +148,8 @@ export default function Partners() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-8"
             >
-              Together with our partners, we're creating lasting impact in communities
-              through youth development and support services.
+              Together with our partners, we're creating lasting impact in
+              communities through youth development and support services.
             </motion.p>
           </motion.div>
         </Container>
@@ -137,8 +177,12 @@ export default function Partners() {
                 </div>
                 {hoveredPartner === partner.name && (
                   <div className="absolute inset-0 bg-white/95 rounded-lg p-6 flex flex-col justify-center items-center text-center transition-all duration-300">
-                    <h3 className="text-xl font-bold text-lift-text-primary mb-2">{partner.name}</h3>
-                    <p className="text-lift-text-secondary">{partner.description}</p>
+                    <h3 className="text-xl font-bold text-lift-text-primary mb-2">
+                      {partner.name}
+                    </h3>
+                    <p className="text-lift-text-secondary">
+                      {partner.description}
+                    </p>
                   </div>
                 )}
               </div>
@@ -203,19 +247,20 @@ export default function Partners() {
               variants={fadeInUp}
               className="text-lift-text-secondary mb-8"
             >
-              Join us in our mission to support and empower young people in our community.
-              Let's create lasting impact together.
+              Join us in our mission to support and empower young people in our
+              community. Let's create lasting impact together.
             </motion.p>
             <motion.div
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg">Schedule a Meeting</Button>
-              <Button variant="secondary" size="lg">Fill Interest Form</Button>
+              <Link href="/contact">
+                <Button size="lg">Contact Us</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>
       </section>
     </MainLayout>
   );
-} 
+}

@@ -150,6 +150,50 @@ export default function Chapters() {
         </Container>
       </section>
 
+      {/* Join a Chapter Section */}
+      <section className="py-20 bg-white">
+        <Container>
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl font-bold text-lift-text-primary mb-8"
+            >
+              Join a Chapter
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lift-text-secondary mb-8"
+            >
+              Ready to get involved? Join one of our existing chapters and start
+              making an impact in your community
+            </motion.p>
+            <motion.div
+              variants={fadeInUp}
+              className="flex flex-col sm:flex-row gap-4 justify-center"
+            >
+              <Link
+                href="https://tally.so/r/3xo11v"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg">Find a Chapter</Button>
+              </Link>
+              <Link href="/contact">
+                <Button variant="secondary" size="lg">
+                  Need Help?
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </Container>
+      </section>
+
       {/* Chapter Directory */}
       <section className="py-20 bg-white">
         <Container>
@@ -161,6 +205,7 @@ export default function Chapters() {
           >
             <motion.h2
               variants={fadeInUp}
+              id="chapter-directory"
               className="text-3xl font-bold text-lift-text-primary text-center mb-12"
             >
               Chapter Directory

@@ -58,7 +58,11 @@ export default function Home() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Link href={"/chapters/"}>
+              <Link
+                href="https://tally.so/r/3xo11v"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 <Button size="lg">Join a Chapter</Button>
               </Link>
               <Link href={"/impact/"}>
