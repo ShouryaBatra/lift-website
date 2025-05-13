@@ -1,27 +1,27 @@
-import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
-import { collection, getDocs } from 'firebase/firestore';
-import { db } from '../config/firebase';
-import MainLayout from '../components/layout/MainLayout';
-import Container from '../components/ui/Container';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
-import dynamic from 'next/dynamic';
-import Link from 'next/link';
-const USAMap = dynamic(() => import('../components/USAMap'), { ssr: false });
+import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { collection, getDocs } from "firebase/firestore";
+import { db } from "../config/firebase";
+import MainLayout from "../components/layout/MainLayout";
+import Container from "../components/ui/Container";
+import Card from "../components/ui/Card";
+import Button from "../components/ui/Button";
+import dynamic from "next/dynamic";
+import Link from "next/link";
+const USAMap = dynamic(() => import("../components/USAMap"), { ssr: false });
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function Chapters() {
@@ -32,16 +32,16 @@ export default function Chapters() {
   useEffect(() => {
     const fetchChapters = async () => {
       try {
-        const chaptersCollection = collection(db, 'chapters');
+        const chaptersCollection = collection(db, "chapters");
         const chaptersSnapshot = await getDocs(chaptersCollection);
-        const chaptersList = chaptersSnapshot.docs.map(doc => ({
+        const chaptersList = chaptersSnapshot.docs.map((doc) => ({
           id: doc.id,
-          ...doc.data()
+          ...doc.data(),
         }));
         setChapters(chaptersList);
       } catch (err) {
-        console.error('Error fetching chapters:', err);
-        setError('Failed to load chapters. Please try again later.');
+        console.error("Error fetching chapters:", err);
+        setError("Failed to load chapters. Please try again later.");
       } finally {
         setLoading(false);
       }
@@ -71,8 +71,9 @@ export default function Chapters() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-8"
             >
-              Join our growing network of chapters worldwide and be part of the movement
-              to empower youth through financial literacy and professional development.
+              Join our growing network of chapters worldwide and be part of the
+              movement to empower youth through financial literacy and
+              professional development.
             </motion.p>
           </motion.div>
         </Container>
@@ -101,7 +102,7 @@ export default function Chapters() {
               {/* Add an interactive map component here */}
               {loading || error ? (
                 <p className="text-lift-text-secondary p-8">
-                  {loading ? 'Loading map...' : 'Unable to load map.'}
+                  {loading ? "Loading map..." : "Unable to load map."}
                 </p>
               ) : (
                 <USAMap chapters={chapters} />
@@ -131,8 +132,8 @@ export default function Chapters() {
               variants={fadeInUp}
               className="text-lift-text-secondary mb-8"
             >
-              Want to bring L.I.F.T. to your city? We're always looking for passionate
-              individuals to help us expand our reach.
+              Want to bring L.I.F.T. to your city? We're always looking for
+              passionate individuals to help us expand our reach.
             </motion.p>
             <motion.div
               variants={fadeInUp}
@@ -140,7 +141,9 @@ export default function Chapters() {
             >
               <Button size="lg">Start a Chapter</Button>
               <Link href={"/contact"}>
-                <Button variant="secondary" size="lg">Contact Us</Button>
+                <Button variant="secondary" size="lg">
+                  Contact Us
+                </Button>
               </Link>
             </motion.div>
           </motion.div>
@@ -175,31 +178,27 @@ export default function Chapters() {
                 {chapters.map((chapter) => (
                   <Card key={chapter.id} className="p-6">
                     <div className="text-center">
-                      <div className="w-full h-48 bg-gray-200 rounded-lg mb-4">
-                        {/* Add actual images later */}
-                      </div>
-                      <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
-                        {chapter.location?.city}, {chapter.location?.state}
-                      </h3>
-                      <p className="text-lift-text-secondary mb-4">
-                        {chapter.description}
-                      </p>
-                      <div className="space-y-2 mb-6">
-                        <p className="text-lift-blue">
-                          <span className="font-semibold">{chapter.members}</span> Members
-                        </p>
-                        <div className="flex flex-wrap gap-2 justify-center">
-                          {chapter.programs.map((program) => (
-                            <span
-                              key={program}
-                              className="px-3 py-1 bg-lift-blue/10 text-lift-blue rounded-full text-sm"
-                            >
-                              {program}
-                            </span>
-                          ))}
+                      {chapter.image && (
+                        <div className="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={chapter.image}
+                            alt={chapter.chapterLead}
+                            className="object-cover w-full h-full"
+                          />
                         </div>
+                      )}
+                      <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
+                        {chapter.location?.state}
+                      </h3>
+                      <div className="text-lift-text-secondary mb-2">
+                        <span className="font-semibold">Chapter Lead:</span>{" "}
+                        {chapter.chapterLead}
                       </div>
-                      <Button variant="secondary">Learn More</Button>
+                      <div className="text-lift-text-secondary mb-2">
+                        <span className="font-semibold">Chapter Since:</span>{" "}
+                        {chapter.chapterSince}
+                      </div>
                     </div>
                   </Card>
                 ))}
@@ -210,4 +209,4 @@ export default function Chapters() {
       </section>
     </MainLayout>
   );
-} 
+}
