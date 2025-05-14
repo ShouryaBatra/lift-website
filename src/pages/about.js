@@ -1,43 +1,47 @@
-import { motion } from 'framer-motion';
-import MainLayout from '../components/layout/MainLayout';
-import Container from '../components/ui/Container';
-import Card from '../components/ui/Card';
+import { motion } from "framer-motion";
+import MainLayout from "../components/layout/MainLayout";
+import Container from "../components/ui/Container";
+import Card from "../components/ui/Card";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
+};
+
+const circleHover = {
+  y: -5,
+  transition: { type: "spring", stiffness: 400, damping: 10 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function About() {
   const teamMembers = [
-    
     {
-      name: 'Samay',
-      role: 'Founder',
-      bio: 'Dedicated to creating opportunities for at-risk youth.',
-      image: '/team/samay.jpg'
+      name: "Samay",
+      role: "Founder",
+      bio: "Dedicated to creating opportunities for at-risk youth.",
+      image: "/team/samay.jpg",
     },
     {
-      name: 'Arnav',
-      role: 'Founder',
-      bio: 'Passionate about youth development and financial education.',
-      image: '/team/arnav.jpg' // You'll need to add these images
+      name: "Arnav",
+      role: "Founder",
+      bio: "Passionate about youth development and financial education.",
+      image: "/team/arnav.jpg", // You'll need to add these images
     },
     {
-      name: 'Advay',
-      role: 'Founder',
-      bio: 'Committed to transforming lives through education.',
-      image: '/team/advay.jpg'
-    }
+      name: "Advay",
+      role: "Founder",
+      bio: "Committed to transforming lives through education.",
+      image: "/team/advay.jpg",
+    },
   ];
 
   return (
@@ -62,26 +66,36 @@ export default function About() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-12"
             >
-              We are dedicated to empowering youth through financial literacy and professional development,
-              creating a future where every young person has the tools and knowledge to succeed.
+              We are dedicated to empowering youth through financial literacy
+              and professional development, creating a future where every young
+              person has the tools and knowledge to succeed.
             </motion.p>
 
             <motion.div
               variants={staggerContainer}
               className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16"
             >
-              {['Access', 'Equity', 'Empathy', 'Innovation'].map((value, index) => (
-                <motion.div
-                  key={value}
-                  variants={fadeInUp}
-                  className="text-center"
-                >
-                  <div className="w-16 h-16 bg-lift-blue/10 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-lift-blue text-xl font-bold">{value[0]}</span>
-                  </div>
-                  <h3 className="text-lg font-semibold text-lift-text-primary">{value}</h3>
-                </motion.div>
-              ))}
+              {["Access", "Equity", "Empathy", "Innovation"].map(
+                (value, index) => (
+                  <motion.div
+                    key={value}
+                    variants={fadeInUp}
+                    className="text-center"
+                  >
+                    <motion.div
+                      whileHover={circleHover}
+                      className="w-16 h-16 bg-lift-blue/10 rounded-full flex items-center justify-center mx-auto mb-4 cursor-pointer"
+                    >
+                      <span className="text-lift-blue text-xl font-bold">
+                        {value[0]}
+                      </span>
+                    </motion.div>
+                    <h3 className="text-lg font-semibold text-lift-text-primary">
+                      {value}
+                    </h3>
+                  </motion.div>
+                )
+              )}
             </motion.div>
           </motion.div>
         </Container>
@@ -138,20 +152,19 @@ export default function About() {
             >
               Founders' Story
             </motion.h2>
-            <motion.div
-              variants={fadeInUp}
-              className="prose prose-lg mx-auto"
-            >
+            <motion.div variants={fadeInUp} className="prose prose-lg mx-auto">
               <p>
-                L.I.F.T. began with a simple idea: to provide real-world skills to those who need it most.
-                Our founders, having experienced the transformative power of financial literacy and professional
-                development, came together to create an organization that would make these essential skills
-                accessible to all.
+                L.I.F.T. began with a simple idea: to provide real-world skills
+                to those who need it most. Our founders, having experienced the
+                transformative power of financial literacy and professional
+                development, came together to create an organization that would
+                make these essential skills accessible to all.
               </p>
               <p>
-                What started as a small initiative has grown into a global movement, with chapters across
-                multiple countries and thousands of lives impacted. Our journey continues as we work to
-                expand our reach and deepen our impact.
+                What started as a small initiative has grown into a global
+                movement, with chapters across multiple countries and thousands
+                of lives impacted. Our journey continues as we work to expand
+                our reach and deepen our impact.
               </p>
             </motion.div>
           </motion.div>
@@ -159,4 +172,4 @@ export default function About() {
       </section>
     </MainLayout>
   );
-} 
+}

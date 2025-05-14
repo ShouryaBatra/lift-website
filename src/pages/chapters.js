@@ -223,16 +223,6 @@ export default function Chapters() {
                 {chapters.map((chapter) => (
                   <Card key={chapter.id} className="p-6">
                     <div className="text-center">
-                      {chapter.image && (
-                        <div className="w-full h-48 bg-gray-200 rounded-lg mb-4 flex items-center justify-center overflow-hidden">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={chapter.image}
-                            alt={chapter.chapterLead}
-                            className="object-cover w-full h-full"
-                          />
-                        </div>
-                      )}
                       <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
                         {chapter.location?.state}
                       </h3>

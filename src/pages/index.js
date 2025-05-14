@@ -51,8 +51,8 @@ export default function Home() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-8"
             >
-              Providing real-world skills to those who need it the most.
-              Specializing in financial literacy and professional development.
+              Providing real-world skills to those who need it the most,
+              specializing in financial literacy and professional development.
             </motion.p>
             <motion.div
               variants={fadeInUp}

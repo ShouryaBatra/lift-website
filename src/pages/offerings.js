@@ -149,7 +149,6 @@ export default function Offerings() {
                       </li>
                     ))}
                   </ul>
-                  <Button variant="secondary">Learn More</Button>
                 </div>
               </Card>
             ))}
