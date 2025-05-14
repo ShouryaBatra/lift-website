@@ -76,36 +76,25 @@ export default function Contact() {
                 lift.empowerlives@gmail.com
               </a>
             </motion.p>
-            <form className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div>
-                  <label
-                    htmlFor="firstName"
-                    className="block text-sm font-medium text-lift-text-primary mb-2"
-                  >
-                    First Name
-                  </label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lift-blue focus:border-transparent"
-                    required
-                  />
-                </div>
-                <div>
-                  <label
-                    htmlFor="lastName"
-                    className="block text-sm font-medium text-lift-text-primary mb-2"
-                  >
-                    Last Name
-                  </label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lift-blue focus:border-transparent"
-                    required
-                  />
-                </div>
+            <form
+              className="space-y-6"
+              action="https://formspree.io/f/meogpnlp"
+              method="POST"
+            >
+              <div>
+                <label
+                  htmlFor="name"
+                  className="block text-sm font-medium text-lift-text-primary mb-2"
+                >
+                  Name
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lift-blue focus:border-transparent"
+                  required
+                />
               </div>
               <div>
                 <label
@@ -117,6 +106,7 @@ export default function Contact() {
                 <input
                   type="email"
                   id="email"
+                  name="email"
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lift-blue focus:border-transparent"
                   required
                 />
@@ -130,6 +120,7 @@ export default function Contact() {
                   Message
                 </label>
                 <textarea
+                  name="message"
                   id="message"
                   rows={6}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-lift-blue focus:border-transparent"
