@@ -133,29 +133,52 @@ const MainLayout = ({ children }) => {
       {/* Footer */}
       <footer className="bg-lift-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            {/* L.I.F.T. Branding */}
+            <div className="lg:col-span-3">
               <h3 className="text-xl font-bold mb-4">L.I.F.T.</h3>
               <p className="text-gray-300">
                 Lead. Inspire. Future. Transformation.
               </p>
             </div>
-            <div>
+
+            {/* Quick Links */}
+            <div className="lg:col-span-6">
               <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2">
-                {navItems.map((item) => (
-                  <li key={item.name}>
-                    <Link
-                      href={item.href}
-                      className="text-gray-300 hover:text-white transition-colors duration-200"
-                    >
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
+              <div className="grid grid-cols-2 gap-x-8 gap-y-2">
+                <div>
+                  <ul className="space-y-2">
+                    {navItems.slice(0, 4).map((item) => (
+                      <li key={item.name}>
+                        <Link
+                          href={item.href}
+                          className="text-gray-300 hover:text-white transition-colors duration-200"
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                <div>
+                  <ul className="space-y-2">
+                    {navItems.slice(4).map((item) => (
+                      <li key={item.name}>
+                        <Link
+                          href={item.href}
+                          className="text-gray-300 hover:text-white transition-colors duration-200"
+                        >
+                          {item.name}
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
             </div>
-            <div>
+
+            {/* Connect */}
+            <div className="lg:col-span-3">
               <h4 className="text-lg font-semibold mb-4">Connect</h4>
               <div className="flex space-x-4">
                 <a
