@@ -12,6 +12,8 @@ import unityCare from "@/assets/logos/unityCare.jpg";
 import jobCorps from "@/assets/logos/jobCorps.png";
 import downtownYouthWellnessCenter from "@/assets/logos/downtownYouthWellnessCenter.jpeg";
 import ymca from "@/assets/logos/ymca.png";
+import Image from "next/image";
+import image1 from "@/assets/images/image1.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -33,6 +35,65 @@ const impactNumbers = [
   { number: 5000, suffix: "+", label: "Hours of Content" },
   { number: 200, suffix: "+", label: "Volunteers Trained" },
 ];
+
+function AdvocacySection() {
+  return (
+    <section className="py-20 bg-lift-accent">
+      <Container>
+        <motion.div
+          initial="initial"
+          whileInView="animate"
+          viewport={{ once: true }}
+          variants={staggerContainer}
+          className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+        >
+          {/* Left: LIFT Summary */}
+          <motion.div variants={fadeInUp} className="order-2 md:order-1">
+            <h2 className="text-3xl md:text-5xl font-bold text-lift-text-primary mb-6">
+              What is LIFT?
+            </h2>
+            <p className="text-lg text-lift-text-secondary mb-8">
+              LIFT is dedicated to empowering youth through financial literacy
+              and professional development. We believe every young person
+              deserves the tools, knowledge, and support to build a brighter
+              future—no matter their background.
+            </p>
+            <Link href="/about">
+              <Button as="a" size="lg">
+                Meet Our Community
+              </Button>
+            </Link>
+          </motion.div>
+          {/* Right: Image with subtle animation */}
+          <motion.div
+            variants={fadeInUp}
+            className="order-1 md:order-2 flex justify-center"
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98 }}
+              animate={{ opacity: 1, scale: 1 }}
+              whileHover={{
+                scale: 1.015,
+                boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
+              }}
+              transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+              className="w-full max-w-xl aspect-[4/3] relative rounded-2xl overflow-hidden shadow-lg"
+            >
+              <Image
+                src={image1}
+                alt="Founders meeting partners"
+                fill
+                className="object-cover"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
+              />
+            </motion.div>
+          </motion.div>
+        </motion.div>
+      </Container>
+    </section>
+  );
+}
 
 export default function Home() {
   const partners = [
@@ -140,9 +201,33 @@ export default function Home() {
         </Container>
       </section>
 
+      {/* Advocacy Split Section (What is LIFT?) */}
+      <AdvocacySection />
+
       {/* Work Overview Section */}
-      <section className="py-20 bg-lift-accent">
+      <section className="py-20 bg-white">
         <Container>
+          <motion.div
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            variants={staggerContainer}
+            className="mb-12 text-center"
+          >
+            <motion.h2
+              variants={fadeInUp}
+              className="text-3xl font-bold text-lift-text-primary mb-4"
+            >
+              What We Offer
+            </motion.h2>
+            <motion.p
+              variants={fadeInUp}
+              className="text-lift-text-secondary max-w-2xl mx-auto"
+            >
+              Explore our core programs designed to equip youth with essential
+              life and career skills.
+            </motion.p>
+          </motion.div>
           <motion.div
             initial="initial"
             whileInView="animate"
@@ -205,7 +290,7 @@ export default function Home() {
       </section>
 
       {/* Partners Carousel Section */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-lift-accent">
         <Container>
           <motion.div
             initial="initial"
