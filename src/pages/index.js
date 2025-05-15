@@ -5,6 +5,13 @@ import Card from "../components/ui/Card";
 import Container from "../components/ui/Container";
 import AnimatedCounter from "../components/ui/AnimatedCounter";
 import Link from "next/link";
+import PartnerCarousel from "../components/partners/PartnerCarousel";
+import billWilsonLogo from "@/assets/logos/bill-wilson.png";
+import allcoveLogo from "@/assets/logos/allcove.png";
+import unityCare from "@/assets/logos/unityCare.jpg";
+import jobCorps from "@/assets/logos/jobCorps.png";
+import downtownYouthWellnessCenter from "@/assets/logos/downtownYouthWellnessCenter.jpeg";
+import ymca from "@/assets/logos/ymca.png";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -28,6 +35,33 @@ const impactNumbers = [
 ];
 
 export default function Home() {
+  const partners = [
+    {
+      name: "Bill Wilson Center",
+      logo: billWilsonLogo,
+    },
+    {
+      name: "Allcove Center",
+      logo: allcoveLogo,
+    },
+    {
+      name: "Unity Care",
+      logo: unityCare,
+    },
+    {
+      name: "SJ Job Corps",
+      logo: jobCorps,
+    },
+    {
+      name: "Downtown Youth Wellness Center",
+      logo: downtownYouthWellnessCenter,
+    },
+    {
+      name: "YMCA",
+      logo: ymca,
+    },
+  ];
+
   return (
     <MainLayout>
       {/* Hero Section */}
@@ -170,7 +204,7 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* Newsletter Section */}
+      {/* Partners Carousel Section */}
       <section className="py-20 bg-white">
         <Container>
           <motion.div
@@ -178,33 +212,20 @@ export default function Home() {
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="max-w-2xl mx-auto text-center"
+            className="text-center mb-12"
           >
             <motion.h2
               variants={fadeInUp}
               className="text-3xl font-bold text-lift-text-primary mb-4"
             >
-              Stay Updated
+              Our Partners
             </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lift-text-secondary mb-8"
-            >
-              Join our newsletter to receive updates about our programs and
-              impact.
+            <motion.p variants={fadeInUp} className="text-lift-text-secondary">
+              Together with our partners, we're creating lasting impact in
+              communities through youth development and support services.
             </motion.p>
-            <motion.form
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4"
-            >
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="flex-grow px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-lift-blue focus:border-transparent"
-              />
-              <Button type="submit">Subscribe</Button>
-            </motion.form>
           </motion.div>
+          <PartnerCarousel partners={partners} />
         </Container>
       </section>
     </MainLayout>
