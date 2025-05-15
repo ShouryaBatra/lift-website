@@ -133,7 +133,7 @@ const MainLayout = ({ children }) => {
       {/* Footer */}
       <footer className="bg-lift-blue text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
               <h3 className="text-xl font-bold mb-4">L.I.F.T.</h3>
               <p className="text-gray-300">
@@ -160,6 +160,8 @@ const MainLayout = ({ children }) => {
               <div className="flex space-x-4">
                 <a
                   href="https://instagram.com/empowerlives_"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white"
                 >
                   <span className="sr-only">Instagram</span>
@@ -173,6 +175,8 @@ const MainLayout = ({ children }) => {
                 </a>
                 <a
                   href="https://www.linkedin.com/company/lift-empowerlives/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-gray-300 hover:text-white"
                 >
                   <span className="sr-only">LinkedIn</span>
@@ -185,22 +189,6 @@ const MainLayout = ({ children }) => {
                   </svg>
                 </a>
               </div>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Newsletter</h4>
-              <form className="space-y-2">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="w-full px-3 py-2 bg-white/10 border border-white/20 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white/50"
-                />
-                <button
-                  type="submit"
-                  className="w-full px-4 py-2 bg-white text-lift-blue rounded-md hover:bg-gray-100 transition-colors duration-200"
-                >
-                  Subscribe
-                </button>
-              </form>
             </div>
           </div>
           <div className="mt-8 pt-8 border-t border-white/10 text-center text-gray-300">
