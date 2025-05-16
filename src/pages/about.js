@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import MainLayout from "../components/layout/MainLayout";
 import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
+import Image from "next/image";
+import image2 from "@/assets/images/image2.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -144,28 +146,57 @@ export default function About() {
             whileInView="animate"
             viewport={{ once: true }}
             variants={staggerContainer}
-            className="max-w-4xl mx-auto"
+            className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center max-w-5xl mx-auto"
           >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl font-bold text-lift-text-primary text-center mb-12"
-            >
-              Founders' Story
-            </motion.h2>
-            <motion.div variants={fadeInUp} className="prose prose-lg mx-auto">
-              <p>
-                L.I.F.T. began with a simple idea: to provide real-world skills
-                to those who need it most. Our founders, having experienced the
-                transformative power of financial literacy and professional
-                development, came together to create an organization that would
-                make these essential skills accessible to all.
-              </p>
-              <p>
-                What started as a small initiative has grown into a global
-                movement, with chapters across multiple countries and thousands
-                of lives impacted. Our journey continues as we work to expand
-                our reach and deepen our impact.
-              </p>
+            {/* Left: Text */}
+            <motion.div variants={fadeInUp} className="order-2 md:order-1">
+              <motion.h2
+                variants={fadeInUp}
+                className="text-3xl font-bold text-lift-text-primary mb-8 text-center md:text-left"
+              >
+                Founders' Story
+              </motion.h2>
+              <motion.div
+                variants={fadeInUp}
+                className="prose prose-lg mx-auto md:mx-0"
+              >
+                <p>
+                  L.I.F.T. began with a simple idea: to provide real-world
+                  skills to those who need it most. Our founders, having
+                  experienced the transformative power of financial literacy and
+                  professional development, came together to create an
+                  organization that would make these essential skills accessible
+                  to all.
+                </p>
+                <p>
+                  What started as a small initiative has grown into a global
+                  movement, with chapters across multiple countries and
+                  thousands of lives impacted. Our journey continues as we work
+                  to expand our reach and deepen our impact.
+                </p>
+              </motion.div>
+            </motion.div>
+            {/* Right: Image */}
+            <motion.div className="order-1 md:order-2 flex justify-center">
+              <motion.div
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                whileHover={{
+                  scale: 1.015,
+                  boxShadow: "0 4px 16px rgba(0,0,0,0.10)",
+                }}
+                transition={{ duration: 0.5, type: "spring", stiffness: 120 }}
+                className="w-full max-w-md aspect-[3/4] relative rounded-2xl overflow-hidden shadow-lg"
+              >
+                <Image
+                  src={image2}
+                  alt="Team collaboration"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  priority={false}
+                />
+              </motion.div>
             </motion.div>
           </motion.div>
         </Container>
