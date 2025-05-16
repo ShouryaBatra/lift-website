@@ -4,6 +4,8 @@ import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
 import Image from "next/image";
 import image2 from "@/assets/images/image2.jpg";
+import samay from "@/assets/team/samay.jpg";
+import advay from "@/assets/team/advay.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -27,22 +29,19 @@ const staggerContainer = {
 export default function About() {
   const teamMembers = [
     {
-      name: "Samay",
-      role: "Founder",
-      bio: "Dedicated to creating opportunities for at-risk youth.",
-      image: "/team/samay.jpg",
+      name: "Samay Sikri",
+      role: "founder and CEO",
+      image: samay,
     },
     {
-      name: "Arnav",
-      role: "Founder",
-      bio: "Passionate about youth development and financial education.",
+      name: "Arnav Kodavati",
+      role: "CFO",
       image: "/team/arnav.jpg", // You'll need to add these images
     },
     {
-      name: "Advay",
-      role: "Founder",
-      bio: "Committed to transforming lives through education.",
-      image: "/team/advay.jpg",
+      name: "Advay Ranade",
+      role: "CBDO",
+      image: advay,
     },
   ];
 
@@ -122,14 +121,19 @@ export default function About() {
               {teamMembers.map((member, index) => (
                 <Card key={member.name} className="p-6">
                   <div className="text-center">
-                    <div className="w-32 h-32 rounded-full bg-gray-200 mx-auto mb-4">
-                      {/* Add actual images later */}
+                    <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-4 relative">
+                      <Image
+                        src={member.image}
+                        alt={`${member.name}'s profile picture`}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 128px, 128px"
+                      />
                     </div>
                     <h3 className="text-xl font-bold text-lift-text-primary mb-2">
                       {member.name}
                     </h3>
                     <p className="text-lift-blue mb-2">{member.role}</p>
-                    <p className="text-lift-text-secondary">{member.bio}</p>
                   </div>
                 </Card>
               ))}

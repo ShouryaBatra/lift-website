@@ -187,7 +187,15 @@ export default function GetInvolved() {
               </Card>
             </motion.div>
             <motion.div variants={fadeInUp}>
-              <Button size="lg">Start Your Chapter</Button>
+              <Link
+                href={
+                  "https://docs.google.com/document/d/1UxGy88fgXaAfkep44sQGIOXmk3QakSlZHyn-BlKQfhw/edit?usp=sharing"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg">Start Your Chapter</Button>
+              </Link>
             </motion.div>
           </motion.div>
         </Container>

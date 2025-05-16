@@ -139,7 +139,15 @@ export default function Chapters() {
               variants={fadeInUp}
               className="flex flex-col sm:flex-row gap-4 justify-center"
             >
-              <Button size="lg">Start a Chapter</Button>
+              <Link
+                href={
+                  "https://docs.google.com/document/d/1UxGy88fgXaAfkep44sQGIOXmk3QakSlZHyn-BlKQfhw/edit?usp=sharing"
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button size="lg">Start a Chapter</Button>
+              </Link>
               <Link href={"/contact"}>
                 <Button variant="secondary" size="lg">
                   Contact Us
@@ -195,7 +203,7 @@ export default function Chapters() {
       </section>
 
       {/* Chapter Directory */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-lift-accent">
         <Container>
           <motion.div
             initial="initial"

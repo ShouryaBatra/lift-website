@@ -60,7 +60,7 @@ function AdvocacySection() {
             </p>
             <Link href="/about">
               <Button as="a" size="lg">
-                Meet Our Community
+                Learn More
               </Button>
             </Link>
           </motion.div>

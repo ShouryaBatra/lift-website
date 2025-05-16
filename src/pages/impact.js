@@ -1,72 +1,75 @@
-import { motion } from 'framer-motion';
-import MainLayout from '../components/layout/MainLayout';
-import Container from '../components/ui/Container';
-import Card from '../components/ui/Card';
-import Button from '../components/ui/Button';
-import AnimatedCounter from '../components/ui/AnimatedCounter';
-import Link from 'next/link';
+import { motion } from "framer-motion";
+import MainLayout from "../components/layout/MainLayout";
+import Container from "../components/ui/Container";
+import Card from "../components/ui/Card";
+import Button from "../components/ui/Button";
+import AnimatedCounter from "../components/ui/AnimatedCounter";
+import Link from "next/link";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.5 }
+  transition: { duration: 0.5 },
 };
 
 const staggerContainer = {
   animate: {
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 };
 
 export default function Impact() {
   const impactStats = [
     {
       number: 1000,
-      suffix: '+',
-      label: 'Students Mentored',
-      description: 'Youth empowered through our programs'
+      suffix: "+",
+      label: "Students Mentored",
+      description: "Youth empowered through our programs",
     },
     {
       number: 85,
-      suffix: '%',
-      label: 'Success Rate',
-      description: 'Students achieving their financial goals'
+      suffix: "%",
+      label: "Success Rate",
+      description: "Students achieving their financial goals",
     },
     {
       number: 50,
-      suffix: '+',
-      label: 'Partner Schools',
-      description: 'Educational institutions we work with'
+      suffix: "+",
+      label: "Partner Schools",
+      description: "Educational institutions we work with",
     },
     {
       number: 200,
-      suffix: '+',
-      label: 'Volunteers',
-      description: 'Dedicated mentors and educators'
-    }
+      suffix: "+",
+      label: "Volunteers",
+      description: "Dedicated mentors and educators",
+    },
   ];
 
   const successStories = [
     {
-      name: 'Sarah Johnson',
-      role: 'Financial Literacy Graduate',
-      story: "After completing L.I.F.T.'s financial literacy program, Sarah started her own small business and now mentors other young entrepreneurs.",
-      image: '/stories/sarah.jpg' // You'll need to add these images
+      name: "Sarah Johnson",
+      role: "Financial Literacy Graduate",
+      story:
+        "After completing L.I.F.T.'s financial literacy program, Sarah started her own small business and now mentors other young entrepreneurs.",
+      image: "/stories/sarah.jpg", // You'll need to add these images
     },
     {
-      name: 'Michael Chen',
-      role: 'Professional Development Graduate',
-      story: 'Michael secured his dream job in finance after participating in our professional development workshops and networking events.',
-      image: '/stories/michael.jpg'
+      name: "Michael Chen",
+      role: "Professional Development Graduate",
+      story:
+        "Michael secured his dream job in finance after participating in our professional development workshops and networking events.",
+      image: "/stories/michael.jpg",
     },
     {
-      name: 'Emma Rodriguez',
-      role: 'Leadership Program Graduate',
-      story: 'Emma now leads a community initiative focused on financial education for underserved youth in her neighborhood.',
-      image: '/stories/emma.jpg'
-    }
+      name: "Emma Rodriguez",
+      role: "Leadership Program Graduate",
+      story:
+        "Emma now leads a community initiative focused on financial education for underserved youth in her neighborhood.",
+      image: "/stories/emma.jpg",
+    },
   ];
 
   return (
@@ -116,9 +119,7 @@ export default function Impact() {
                   <p className="text-lg font-semibold text-lift-text-primary mb-2">
                     {stat.label}
                   </p>
-                  <p className="text-lift-text-secondary">
-                    {stat.description}
-                  </p>
+                  <p className="text-lift-text-secondary">{stat.description}</p>
                 </motion.div>
               </Card>
             ))}
@@ -164,42 +165,8 @@ export default function Impact() {
         </Container>
       </section>
 
-      {/* Impact Report Section */}
-      <section className="py-20 bg-white">
-        <Container>
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl font-bold text-lift-text-primary mb-8"
-            >
-              Annual Impact Report
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lift-text-secondary mb-8"
-            >
-              Download our comprehensive impact report to learn more about our
-              achievements and future goals.
-            </motion.p>
-            <motion.div
-              variants={fadeInUp}
-              className="flex flex-col sm:flex-row gap-4 justify-center"
-            >
-              <Button size="lg">Download Report</Button>
-              <Button variant="secondary" size="lg">View Online</Button>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
-
       {/* Call to Action Section */}
-      <section className="py-20 bg-lift-accent">
+      <section className="py-20 bg-white">
         <Container>
           <motion.div
             initial="initial"
@@ -234,4 +201,4 @@ export default function Impact() {
       </section>
     </MainLayout>
   );
-} 
+}
