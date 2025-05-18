@@ -160,13 +160,8 @@ export default function Home() {
               >
                 <Button size="lg">Join a Chapter</Button>
               </Link>
-              <Link href={"/impact/"}>
-                <Button variant="secondary" size="lg">
-                  See Our Impact
-                </Button>
-              </Link>
               <Link href={"/about/"}>
-                <Button variant="ghost" size="lg">
+                <Button variant="secondary" size="lg">
                   Learn More
                 </Button>
               </Link>
