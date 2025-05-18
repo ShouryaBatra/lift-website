@@ -41,7 +41,7 @@ export default function About() {
     },
     {
       name: "Advay Ranade",
-      role: { short: "CXO", long: "Chief Executive Officer" },
+      role: { short: "CXO", long: "Chief Expansion Officer" },
       image: advay,
     },
   ];
