@@ -14,7 +14,6 @@ const MainLayout = ({ children }) => {
     { name: "About", href: "/about" },
     { name: "Offerings", href: "/offerings" },
     { name: "Chapters", href: "/chapters" },
-    { name: "Impact", href: "/impact" },
     { name: "Get Involved", href: "/get-involved" },
     { name: "Partners", href: "/partners" },
     { name: "Contact", href: "/contact" },

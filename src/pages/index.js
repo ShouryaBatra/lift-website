@@ -30,10 +30,10 @@ const staggerContainer = {
 };
 
 const impactNumbers = [
-  { number: 1000, suffix: "+", label: "Students Mentored" },
-  { number: 50, suffix: "+", label: "Chapters Worldwide" },
-  { number: 5000, suffix: "+", label: "Hours of Content" },
-  { number: 200, suffix: "+", label: "Volunteers Trained" },
+  { number: 75, suffix: "+", label: "Students Mentored" },
+  { number: 10, suffix: "+", label: "Community Partnerships" },
+  { number: 40, suffix: "+", label: "Volunteers Trained" },
+  { number: 100, suffix: "+", label: "Instructional Hours" },
 ];
 
 function AdvocacySection() {

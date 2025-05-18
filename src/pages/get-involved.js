@@ -19,6 +19,24 @@ const staggerContainer = {
   },
 };
 
+const generateVolunteerEmail = (opportunityType) => {
+  const subject = `Volunteer Interest - ${opportunityType}`;
+  const body = `Dear LIFT Team,
+
+I am interested in volunteering with LIFT, specifically in the ${opportunityType} opportunities.
+
+Location: [Please provide your location]
+Qualifications: [Please list your relevant qualifications]
+Why I want to join: [Please share your motivation for volunteering with LIFT]
+
+Best regards,
+[Your name]`;
+
+  return `mailto:lift.empowerlives@gmail.com?subject=${encodeURIComponent(
+    subject
+  )}&body=${encodeURIComponent(body)}`;
+};
+
 export default function GetInvolved() {
   const volunteerOpportunities = [
     {
@@ -252,7 +270,13 @@ export default function GetInvolved() {
                         </li>
                       ))}
                     </ul>
-                    <Button variant="secondary">Learn More</Button>
+                    <Link
+                      href={generateVolunteerEmail(opportunity.title)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      <Button variant="secondary">Email Us</Button>
+                    </Link>
                   </div>
                 </Card>
               ))}

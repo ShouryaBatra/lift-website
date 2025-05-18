@@ -6,6 +6,7 @@ import Image from "next/image";
 import image2 from "@/assets/images/image2.jpg";
 import samay from "@/assets/team/samay.jpg";
 import advay from "@/assets/team/advay.jpg";
+import arnav from "@/assets/team/arnav.jpg";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -29,18 +30,18 @@ const staggerContainer = {
 export default function About() {
   const teamMembers = [
     {
+      name: "Arnav Kodavati",
+      role: { short: "CFO", long: "Chief Financial Officer" },
+      image: arnav,
+    },
+    {
       name: "Samay Sikri",
-      role: "founder and CEO",
+      role: { short: "Founder and CEO", long: "Chief Executive Officer" },
       image: samay,
     },
     {
-      name: "Arnav Kodavati",
-      role: "CFO",
-      image: "/team/arnav.jpg", // You'll need to add these images
-    },
-    {
       name: "Advay Ranade",
-      role: "CBDO",
+      role: { short: "CXO", long: "Chief Executive Officer" },
       image: advay,
     },
   ];
@@ -133,7 +134,12 @@ export default function About() {
                     <h3 className="text-xl font-bold text-lift-text-primary mb-2">
                       {member.name}
                     </h3>
-                    <p className="text-lift-blue mb-2">{member.role}</p>
+                    <p className="text-lift-blue font-semibold mb-1">
+                      {member.role.short}
+                    </p>
+                    <p className="text-lift-text-secondary text-sm">
+                      {member.role.long}
+                    </p>
                   </div>
                 </Card>
               ))}
