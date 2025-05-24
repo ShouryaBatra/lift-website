@@ -3,7 +3,7 @@ import MainLayout from "../components/layout/MainLayout";
 import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
 import Image from "next/image";
-import image2 from "@/assets/images/image2.jpg";
+import image4 from "@/assets/images/image4.jpg";
 import samay from "@/assets/team/samay.jpg";
 import advay from "@/assets/team/advay.jpg";
 import arnav from "@/assets/team/arnav.jpg";
@@ -74,16 +74,18 @@ export default function About() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-12"
             >
-              We are dedicated to empowering youth through financial literacy
-              and professional development, creating a future where every young
-              person has the tools and knowledge to succeed.
+              We are dedicated to empowering youth in the juvenile justice
+              system, at risk, and in the foster care system, through financial
+              literacy and professional development, creating a future where
+              every young person has the tools and knowledge to succeed.
+              Real-world skills, to create a life with no stigma.
             </motion.p>
 
             <motion.div
               variants={staggerContainer}
               className="grid grid-cols-1 md:grid-cols-4 gap-8 mt-16"
             >
-              {["Access", "Equity", "Empathy", "Innovation"].map(
+              {["Lead", "Inspire", "Future", "Transformation"].map(
                 (value, index) => (
                   <motion.div
                     key={value}
@@ -217,8 +219,10 @@ export default function About() {
                 className="prose prose-lg mx-auto md:mx-0"
               >
                 <p>
-                  L.I.F.T. began with a simple idea: to provide real-world
-                  skills to those who need it most. Our founders, having
+                  L.I.F.T began when the founders closest friend, someone who
+                  came out of the juvenile justice system, and was in foster
+                  care, did not know how to get ahead in life, especially with a
+                  lack of resources and stigma in society. Our founders, having
                   experienced the transformative power of financial literacy and
                   professional development, came together to create an
                   organization that would make these essential skills accessible
@@ -226,9 +230,9 @@ export default function About() {
                 </p>
                 <p>
                   What started as a small initiative has grown into a global
-                  movement, with chapters across multiple countries and
-                  thousands of lives impacted. Our journey continues as we work
-                  to expand our reach and deepen our impact.
+                  movement, with chapters across the world. Our journey
+                  continues as we work to expand our reach and deepen our
+                  impact.
                 </p>
               </motion.div>
             </motion.div>
@@ -245,7 +249,7 @@ export default function About() {
                 className="w-full max-w-md aspect-[3/4] relative rounded-2xl overflow-hidden shadow-lg"
               >
                 <Image
-                  src={image2}
+                  src={image4}
                   alt="Team collaboration"
                   fill
                   className="object-cover"

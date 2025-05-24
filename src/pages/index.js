@@ -146,8 +146,7 @@ export default function Home() {
               variants={fadeInUp}
               className="text-xl text-lift-text-secondary mb-8"
             >
-              Providing real-world skills to those who need it the most,
-              specializing in financial literacy and professional development.
+              Empowering youth in the juvenile justice and foster care system
             </motion.p>
             <motion.div
               variants={fadeInUp}
