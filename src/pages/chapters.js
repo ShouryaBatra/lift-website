@@ -24,6 +24,24 @@ const staggerContainer = {
   },
 };
 
+// Add the email icon SVG from the about page
+const EmailIcon = () => (
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    className="h-5 w-5 inline-block ml-1 text-lift-blue hover:text-lift-blue/80 transition-colors"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth={2}
+      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+    />
+  </svg>
+);
+
 export default function Chapters() {
   const [chapters, setChapters] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -234,14 +252,27 @@ export default function Chapters() {
                       <h3 className="text-2xl font-bold text-lift-text-primary mb-2">
                         {chapter.location?.state}
                       </h3>
-                      <div className="text-lift-text-secondary mb-2">
+                      <div className="text-lift-text-secondary mb-1">
                         <span className="font-semibold">Chapter Lead:</span>{" "}
-                        {chapter.chapterLead}
+                        {chapter.chapterLead?.name}
                       </div>
-                      <div className="text-lift-text-secondary mb-2">
+                      <div className="text-lift-text-secondary mb-3">
                         <span className="font-semibold">Chapter Since:</span>{" "}
                         {chapter.chapterSince}
                       </div>
+                      {chapter.chapterLead?.email && (
+                        <div className="flex justify-center mb-2">
+                          <a
+                            href={`mailto:${chapter.chapterLead.email}`}
+                            className="text-lift-blue hover:text-lift-blue/80 transition-colors"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`Email ${chapter.chapterLead.name}`}
+                          >
+                            <EmailIcon />
+                          </a>
+                        </div>
+                      )}
                     </div>
                   </Card>
                 ))}

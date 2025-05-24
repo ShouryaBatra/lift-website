@@ -1,18 +1,38 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
 import MainLayout from "../components/layout/MainLayout";
 import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
 import Button from "../components/ui/Button";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../config/firebase";
+
+const ADMIN_EMAIL = "lift.empowerlives@gmail.com";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // No backend logic yet
-    alert("Login functionality coming soon!");
+    setError("");
+    if (email !== ADMIN_EMAIL) {
+      setError("Only the LIFT admin account can log in.");
+      return;
+    }
+    setLoading(true);
+    try {
+      await signInWithEmailAndPassword(auth, email, password);
+      router.push("/admin-chapters");
+    } catch (err) {
+      setError("Invalid email or password.");
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -68,8 +88,14 @@ export default function Login() {
                   </button>
                 </div>
               </div>
-              <Button type="submit" size="lg" className="w-full mt-2">
-                Login
+              {error && <div className="text-red-500 text-center">{error}</div>}
+              <Button
+                type="submit"
+                size="lg"
+                className="w-full mt-2"
+                disabled={loading}
+              >
+                {loading ? "Logging in..." : "Login"}
               </Button>
             </form>
           </Card>

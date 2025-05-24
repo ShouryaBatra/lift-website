@@ -1,13 +1,18 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { auth } from "../../config/firebase";
+import Button from "../ui/Button";
+import { useRouter } from "next/router";
 
 const MainLayout = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const pathname = usePathname();
+  const router = useRouter();
 
   const navItems = [
     { name: "Home", href: "/" },
@@ -18,6 +23,18 @@ const MainLayout = ({ children }) => {
     { name: "Partners", href: "/partners" },
     { name: "Contact", href: "/contact" },
   ];
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      setIsLoggedIn(!!user);
+    });
+    return () => unsubscribe();
+  }, []);
+
+  const handleLogout = async () => {
+    await auth.signOut();
+    router.push("/login");
+  };
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -60,6 +77,16 @@ const MainLayout = ({ children }) => {
                   </Link>
                 );
               })}
+              {isLoggedIn && (
+                <Button
+                  variant="secondary"
+                  size="md"
+                  className="ml-4"
+                  onClick={handleLogout}
+                >
+                  Log Out
+                </Button>
+              )}
             </div>
 
             {/* Mobile menu button */}
@@ -120,6 +147,19 @@ const MainLayout = ({ children }) => {
                     </Link>
                   );
                 })}
+                {isLoggedIn && (
+                  <Button
+                    variant="secondary"
+                    size="md"
+                    className="w-full mt-2"
+                    onClick={() => {
+                      setIsMenuOpen(false);
+                      handleLogout();
+                    }}
+                  >
+                    Log Out
+                  </Button>
+                )}
               </div>
             </motion.div>
           )}
