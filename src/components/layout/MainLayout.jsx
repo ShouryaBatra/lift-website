@@ -263,7 +263,7 @@ const MainLayout = ({ children }) => {
                 href="/bio"
                 className="hover:text-white transition-colors duration-200"
               >
-                Shourya Batra
+                <em>Shourya Batra</em>
               </Link>
             </p>
           </div>
