@@ -136,38 +136,6 @@ export default function Contact() {
           </motion.div>
         </Container>
       </section>
-
-      {/* FAQ Section */}
-      <section className="py-20 bg-lift-accent">
-        <Container>
-          <motion.div
-            initial="initial"
-            whileInView="animate"
-            viewport={{ once: true }}
-            variants={staggerContainer}
-            className="max-w-3xl mx-auto text-center"
-          >
-            <motion.h2
-              variants={fadeInUp}
-              className="text-3xl font-bold text-lift-text-primary mb-8"
-            >
-              Frequently Asked Questions
-            </motion.h2>
-            <motion.p
-              variants={fadeInUp}
-              className="text-lift-text-secondary mb-8"
-            >
-              Can't find what you're looking for? Check our FAQ page for quick
-              answers to common questions.
-            </motion.p>
-            <motion.div variants={fadeInUp} className="flex justify-center">
-              <Link href="/faq">
-                <Button size="lg">View FAQ</Button>
-              </Link>
-            </motion.div>
-          </motion.div>
-        </Container>
-      </section>
     </MainLayout>
   );
 }
