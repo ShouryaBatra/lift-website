@@ -9,6 +9,7 @@ import Button from "../components/ui/Button";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 const USAMap = dynamic(() => import("../components/USAMap"), { ssr: false });
+import { FaInstagram } from "react-icons/fa";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -40,6 +41,11 @@ const EmailIcon = () => (
       d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
     />
   </svg>
+);
+
+// Add Instagram icon component
+const InstagramIcon = () => (
+  <FaInstagram className="h-5 w-5 inline-block ml-1 text-lift-blue hover:text-lift-blue/80 transition-colors" />
 );
 
 export default function Chapters() {
@@ -271,6 +277,17 @@ export default function Chapters() {
                           >
                             <EmailIcon />
                           </a>
+                          {chapter.instagram && (
+                            <a
+                              href={chapter.instagram}
+                              className="text-lift-blue hover:text-lift-blue/80 transition-colors"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              aria-label={`Visit ${chapter.location?.state} chapter Instagram`}
+                            >
+                              <InstagramIcon />
+                            </a>
+                          )}
                         </div>
                       )}
                     </div>

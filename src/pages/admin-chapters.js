@@ -88,6 +88,7 @@ export default function AdminChapters() {
     setEditData({
       chapterLead: { name: "", email: "" },
       chapterSince: "",
+      instagram: "",
       location: {
         state: "",
         city: "",
@@ -284,6 +285,17 @@ export default function AdminChapters() {
                       }
                     />
                   </div>
+                  <div className="mb-2">
+                    <span className="font-semibold">Instagram:</span>{" "}
+                    <input
+                      className="border rounded px-2 py-1"
+                      value={editData.instagram || ""}
+                      onChange={(e) =>
+                        handleEditChange("instagram", e.target.value)
+                      }
+                      placeholder="https://instagram.com/..."
+                    />
+                  </div>
                   <div className="mb-4">
                     <span className="font-semibold">Active:</span>{" "}
                     <input
@@ -387,6 +399,17 @@ export default function AdminChapters() {
                         handleEditChange("chapterSince", e.target.value)
                       }
                       required
+                    />
+                  </div>
+                  <div className="mb-2">
+                    <span className="font-semibold">Instagram:</span>{" "}
+                    <input
+                      className="border rounded px-2 py-1"
+                      value={editData.instagram || ""}
+                      onChange={(e) =>
+                        handleEditChange("instagram", e.target.value)
+                      }
+                      placeholder="https://instagram.com/..."
                     />
                   </div>
                   <div className="mb-4">
