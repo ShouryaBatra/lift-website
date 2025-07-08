@@ -82,13 +82,13 @@ const MainLayout = ({ children }) => {
                   key={"admin"}
                   href={"admin-chapters"}
                   className={`relative transition-colors duration-200 py-2 ${
-                    pathname === "admin-chapters"
+                    pathname === "/admin-chapters"
                       ? "text-lift-blue"
                       : "text-lift-text-secondary hover:text-lift-blue"
                   }`}
                 >
                   Admin
-                  {pathname === "admin-chapters" && (
+                  {pathname === "/admin-chapters" && (
                     <motion.div
                       layoutId="navbar-underline"
                       className="absolute bottom-0 left-0 right-0 h-0.5 bg-lift-blue"
