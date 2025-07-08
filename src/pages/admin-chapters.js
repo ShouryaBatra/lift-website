@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import {
   collection,
@@ -7,8 +7,10 @@ import {
   updateDoc,
   deleteDoc,
   addDoc,
+  getDoc,
 } from "firebase/firestore";
 import { auth, db } from "../config/firebase";
+import { ImpactNumbersContext } from "./_app";
 import MainLayout from "../components/layout/MainLayout";
 import Container from "../components/ui/Container";
 import Card from "../components/ui/Card";
@@ -41,7 +43,19 @@ export default function AdminChapters() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
   const [message, setMessage] = useState("");
+
+  // Impact numbers state
+  const [impactNumbers, setImpactNumbers] = useState({
+    "Students Mentored": 100,
+    "Community Partnerships": 20,
+    "Volunteers Trained": 40,
+    "Instructional Hours": 100,
+  });
+  const [impactLoading, setImpactLoading] = useState(true);
+  const [impactMessage, setImpactMessage] = useState("");
+
   const router = useRouter();
+  const { refreshImpactNumbers } = useContext(ImpactNumbersContext);
 
   // Auth protection
   useEffect(() => {
@@ -70,8 +84,33 @@ export default function AdminChapters() {
       setLoading(false);
     }
   };
+
+  // Fetch impact numbers
+  const fetchImpactNumbers = async () => {
+    setImpactLoading(true);
+    try {
+      const impactDoc = doc(db, "other", "impactNumbers");
+      const docSnap = await getDoc(impactDoc);
+
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        setImpactNumbers({
+          "Students Mentored": data["Students Mentored"] || 100,
+          "Community Partnerships": data["Community Partnerships"] || 20,
+          "Volunteers Trained": data["Volunteers Trained"] || 40,
+          "Instructional Hours": data["Instructional Hours"] || 100,
+        });
+      }
+    } catch (err) {
+      console.error("Failed to load impact numbers:", err);
+    } finally {
+      setImpactLoading(false);
+    }
+  };
+
   useEffect(() => {
     fetchChapters();
+    fetchImpactNumbers();
   }, []);
 
   // Select a chapter
@@ -177,10 +216,123 @@ export default function AdminChapters() {
     }
   };
 
+  // Update impact numbers
+  const handleImpactUpdate = async () => {
+    setImpactMessage("");
+    try {
+      const impactDoc = doc(db, "other", "impactNumbers");
+      await updateDoc(impactDoc, impactNumbers);
+      setImpactMessage("Impact numbers updated successfully!");
+      // Refresh the global state so home page shows updated numbers immediately
+      refreshImpactNumbers();
+    } catch (err) {
+      setImpactMessage("Error updating impact numbers.");
+    }
+  };
+
+  // Handle impact number change
+  const handleImpactChange = (field, value) => {
+    setImpactNumbers((prev) => ({
+      ...prev,
+      [field]: parseInt(value) || 0,
+    }));
+  };
+
   return (
     <MainLayout>
       <section className="py-12 bg-lift-accent min-h-screen">
         <Container>
+          {/* Impact Numbers Section */}
+          <div className="mb-8 bg-white rounded-lg shadow-md p-6">
+            <h2 className="text-2xl font-bold mb-4">Impact Numbers</h2>
+            {impactLoading ? (
+              <div className="text-center">Loading impact numbers...</div>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Students Mentored
+                  </label>
+                  <input
+                    type="number"
+                    className="border rounded px-3 py-2 w-full"
+                    value={impactNumbers["Students Mentored"]}
+                    onChange={(e) =>
+                      handleImpactChange("Students Mentored", e.target.value)
+                    }
+                    min="0"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Community Partnerships
+                  </label>
+                  <input
+                    type="number"
+                    className="border rounded px-3 py-2 w-full"
+                    value={impactNumbers["Community Partnerships"]}
+                    onChange={(e) =>
+                      handleImpactChange(
+                        "Community Partnerships",
+                        e.target.value
+                      )
+                    }
+                    min="0"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Volunteers Trained
+                  </label>
+                  <input
+                    type="number"
+                    className="border rounded px-3 py-2 w-full"
+                    value={impactNumbers["Volunteers Trained"]}
+                    onChange={(e) =>
+                      handleImpactChange("Volunteers Trained", e.target.value)
+                    }
+                    min="0"
+                  />
+                </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-1">
+                    Instructional Hours
+                  </label>
+                  <input
+                    type="number"
+                    className="border rounded px-3 py-2 w-full"
+                    value={impactNumbers["Instructional Hours"]}
+                    onChange={(e) =>
+                      handleImpactChange("Instructional Hours", e.target.value)
+                    }
+                    min="0"
+                  />
+                </div>
+              </div>
+            )}
+            <div className="mt-4 flex items-center gap-4">
+              <Button
+                variant="primary"
+                onClick={handleImpactUpdate}
+                disabled={impactLoading}
+              >
+                Update Impact Numbers
+              </Button>
+              {impactMessage && (
+                <span
+                  className={`text-sm ${
+                    impactMessage.includes("Error")
+                      ? "text-red-600"
+                      : "text-green-600"
+                  }`}
+                >
+                  {impactMessage}
+                </span>
+              )}
+            </div>
+          </div>
+
+          {/* Chapters Management Section */}
           <div className="flex flex-col md:flex-row gap-8">
             {/* Scrollable cards */}
             <div className="md:w-1/3 w-full overflow-x-auto flex md:flex-col flex-row gap-4 pb-4 md:pb-0">

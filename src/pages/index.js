@@ -1,4 +1,6 @@
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { ImpactNumbersContext } from "./_app";
 import MainLayout from "../components/layout/MainLayout";
 import Button from "../components/ui/Button";
 import Card from "../components/ui/Card";
@@ -28,13 +30,6 @@ const staggerContainer = {
     },
   },
 };
-
-const impactNumbers = [
-  { number: 75, suffix: "+", label: "Students Mentored" },
-  { number: 10, suffix: "+", label: "Community Partnerships" },
-  { number: 40, suffix: "+", label: "Volunteers Trained" },
-  { number: 100, suffix: "+", label: "Instructional Hours" },
-];
 
 function AdvocacySection() {
   return (
@@ -96,6 +91,8 @@ function AdvocacySection() {
 }
 
 export default function Home() {
+  const { impactNumbers, loading } = useContext(ImpactNumbersContext);
+
   const partners = [
     {
       name: "Bill Wilson Center",
@@ -179,18 +176,30 @@ export default function Home() {
             variants={staggerContainer}
             className="grid grid-cols-2 md:grid-cols-4 gap-8"
           >
-            {impactNumbers.map((stat, index) => (
-              <motion.div
-                key={index}
-                variants={fadeInUp}
-                className="text-center"
-              >
-                <h3 className="text-4xl font-bold text-lift-blue mb-2">
-                  <AnimatedCounter end={stat.number} suffix={stat.suffix} />
-                </h3>
-                <p className="text-lift-text-secondary">{stat.label}</p>
-              </motion.div>
-            ))}
+            {loading
+              ? // Loading skeleton
+                Array.from({ length: 4 }).map((_, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="text-center"
+                  >
+                    <div className="h-12 bg-gray-200 rounded animate-pulse mb-2"></div>
+                    <div className="h-4 bg-gray-200 rounded animate-pulse"></div>
+                  </motion.div>
+                ))
+              : impactNumbers.map((stat, index) => (
+                  <motion.div
+                    key={index}
+                    variants={fadeInUp}
+                    className="text-center"
+                  >
+                    <h3 className="text-4xl font-bold text-lift-blue mb-2">
+                      <AnimatedCounter end={stat.number} suffix={stat.suffix} />
+                    </h3>
+                    <p className="text-lift-text-secondary">{stat.label}</p>
+                  </motion.div>
+                ))}
           </motion.div>
         </Container>
       </section>
